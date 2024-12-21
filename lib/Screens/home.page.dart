@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutteraiapp/Screens/profile.page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     Center(child: Text("Home Page", style: TextStyle(fontSize: 24))),
     Center(child: Text("Search Page", style: TextStyle(fontSize: 24))),
-    Center(child: Text("Profile Page", style: TextStyle(fontSize: 24))),
+    ProfilePage()
   ];
 
   void _onItemTapped(int index) {
@@ -38,14 +39,16 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
-        items: const <BottomNavigationBarItem>[
+        selectedItemColor: Colors.green,  // Selected color for all items
+        unselectedItemColor: Colors.black,  // Unselected color for all items
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.money, color: _currentIndex == 0 ? Colors.green : Colors.black), // Always green for "Acheter"
+            label: 'Acheter',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.trolley),
+            label: 'Panier',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
