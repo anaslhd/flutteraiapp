@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutteraiapp/Screens/acheter.page.dart';
+import 'package:flutteraiapp/Screens/panier.page.dart';
 import 'package:flutteraiapp/Screens/profile.page.dart';
 import 'details.page.dart'; // Import the details screen
 
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     // Initialize the _pages list with the `AcheterScreen` that supports navigation
     _pages.addAll([
       AcheterScreen(onItemTapped: _navigateToDetails), // Pass the function to AcheterScreen
-      Center(child: Text("Search Page", style: TextStyle(fontSize: 24))),
+      PanierScreen(),
       ProfilePage(),
     ]);
   }
