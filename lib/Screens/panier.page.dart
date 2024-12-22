@@ -113,7 +113,7 @@ class _PanierScreenState extends State<PanierScreen> {
                               'Prix: ${item['price']} | Taille: ${item['size']}',
                             ),
                             trailing: IconButton(
-                              icon: Icon(Icons.delete, color: Colors.red),
+                              icon: Icon(Icons.close, color: Colors.red),
                               onPressed: () => deleteItem(item['id']),
                             ),
                           ),
@@ -128,7 +128,7 @@ class _PanierScreenState extends State<PanierScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total: $totalPrice DA',
+                    'Total: $totalPrice MAD',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Text(

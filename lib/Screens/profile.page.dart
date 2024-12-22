@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';  // For input formatting
+import 'package:flutter/services.dart';
+import 'package:flutteraiapp/Screens/ajouterarticle.page.dart';  // For input formatting
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -97,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
             // Email is readonly
             TextFormField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
+              decoration: InputDecoration(labelText: 'Login'),
               readOnly: true,
             ),
             TextFormField(
@@ -145,6 +146,9 @@ class _ProfilePageState extends State<ProfilePage> {
             ElevatedButton(
               onPressed: () {
                 // Navigate to Add Article screen (you can replace this with your own navigation logic)
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context)=>AjouterArticlePage()),
+                );
                
               },
               child: Text('Ajouter Article'),

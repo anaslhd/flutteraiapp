@@ -26,7 +26,7 @@ class AcheterScreen extends StatelessWidget {
             final size = clothing['Taille'] as String;
             final imageUrl = clothing['image'] as String;
             final marque=clothing['marque'] as String;
-            final categorie=clothing['Categorie'] as String;
+            final categorie=clothing['categorie'] as String;
 
             return Card(
               margin: EdgeInsets.all(8.0),

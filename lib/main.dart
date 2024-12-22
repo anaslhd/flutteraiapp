@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutteraiapp/Screens/ajouterarticle.page.dart';
 import 'package:flutteraiapp/Screens/home.page.dart';
 import 'package:flutteraiapp/Screens/login.page.dart';
+import 'package:flutteraiapp/Screens/profile.page.dart';
 import 'package:flutteraiapp/firebase_options.dart';
 
 
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginPage(),
         '/home':(context) =>HomePage(),
-        '/add':(context)=>AjouterArticlePage()
+        '/add':(context)=>AjouterArticlePage(),
+        '/profile':(context)=>ProfilePage()
      
       },
     );
