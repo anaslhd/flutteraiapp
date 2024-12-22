@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DetailsScreen extends StatelessWidget {
   final String title;
@@ -14,8 +16,39 @@ class DetailsScreen extends StatelessWidget {
     required this.size,
     required this.imageUrl,
     required this.marque,
-    required this.categorie
+    required this.categorie,
   });
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<void> addToCart() async {
+    try {
+      // Get the current user
+      final User? user = _auth.currentUser;
+
+      if (user == null) {
+        throw Exception("User is not logged in");
+      }
+
+      final String uid = user.uid;
+
+      // Add the clothing item to the `paniers` collection
+      await _firestore.collection('paniers').doc(uid).collection('items').add({
+        'title': title,
+        'price': price,
+        'size': size,
+        'imageUrl': imageUrl,
+        'marque': marque,
+        'categorie': categorie,
+  
+      });
+
+      print('Item added to cart successfully');
+    } catch (error) {
+      print('Error adding to cart: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,11 +85,13 @@ class DetailsScreen extends StatelessWidget {
             Text('Marque: $marque', style: TextStyle(fontSize: 20.0)),
             SizedBox(height: 8.0),
             Text('Categorie: $categorie', style: TextStyle(fontSize: 20.0)),
-            Spacer(), // This will push the button to the bottom
+            Spacer(), // Push the button to the bottom
             ElevatedButton(
-              onPressed: () {
-                // Action for adding to cart can be placed here
-                print('Article ajouté au panier');
+              onPressed: () async {
+                await addToCart(); // Call the function to add to cart
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Article ajouté au panier!')),
+                );
               },
               child: Text('Ajouter au panier'),
               style: ElevatedButton.styleFrom(
