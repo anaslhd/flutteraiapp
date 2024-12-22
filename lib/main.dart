@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutteraiapp/Screens/ajouterarticle.page.dart';
 import 'package:flutteraiapp/Screens/home.page.dart';
 import 'package:flutteraiapp/Screens/login.page.dart';
 import 'package:flutteraiapp/firebase_options.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (context) => LoginPage(),
-        '/home':(context) =>HomePage()
+        '/home':(context) =>HomePage(),
+        '/add':(context)=>AjouterArticlePage()
      
       },
     );
